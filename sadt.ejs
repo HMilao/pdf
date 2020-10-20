@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Guia de Exames | <%= date_now %></title>
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+	<style>
+		@charset "UTF-8";
+
+		@font-face {
+    font-family: 'Dejavu Sans';
+    src: url('../fonts/dejavusans-webfont.woff2') format('woff2'),
+         url('../fonts/dejavusans-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+		box-sizing: border-box;
+		}
+
+		body {
+      font-family: 'Dejavu Sans', Arial, sans-serif;
+			color: #000;
+			font-size: 5px;
+      font-weight: bold;
+		}
+
+		p {
+			margin: 0;
+		}
+
+		.exam-guide {
+			background: url(http://fascinated-store.surge.sh/sadt.png) no-repeat center center;
+			background-size: 100% 100%;
+			height: 524px;
+			width: 776.9px;
+		}
+
+		.exam-guide__wrapper {
+			padding: 34px 32.55px;
+			position: relative;
+		}
+
+		.exam-guide__name {
+			width: 305px;
+      position: absolute;
+      top: 143px;
+      left: 291px;
+		}
+
+		.exam-guide__name-doctor {
+			width: 160px;
+      position: absolute;
+      top: 203px;
+      left: 35px;
+		}
+
+    .exam-guide__professional__concil {
+			width: 160px;
+      position: absolute;
+      top: 203px;
+      left: 205px;
+		}
+
+		.exam-guide__crm {
+			width: 100px;
+      position: absolute;
+      top: 202px;
+      left: 323px;
+		}
+
+		.exam-guide__uf {
+			width: 50px;
+      position: absolute;
+      top: 202px;
+      left: 510px;
+		}
+
+    .exam-guide__code-cbo {
+			width: 72px;
+      position: absolute;
+      top: 202px;
+      left: 547px;
+		}
+
+		.exam-guide__solicitation-date {
+			width: 72px;
+      position: absolute;
+      top: 236px;
+      left: 335px;
+		}
+
+		.exam-guide__clinic {
+			width: 220px;
+      position: absolute;
+      top: 229px;
+      left: 586px;
+			height: 12px;
+		}
+
+		.exam-guide__clinic > p {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+		}
+
+.exam-guide__exams-wrapper {
+  position: absolute;
+  left: 34px;
+}
+
+.exam-guide__exams-table {
+  width: 102px;
+  display: inline-block;
+}
+
+.exam-guide__exams-code {
+  display:inline-block;
+  width: 153px;
+}
+
+.exam-guide__exams-description {
+  display: inline-block;
+  width: 233px;
+}
+
+.exam-guide__exams-quantity-requested {
+  display: inline-block;
+  width: 147px;
+}
+	</style>
+</head>
+
+<body>
+	<% items.forEach(function(item) { %>
+		<div class="exam-guide__wrapper">
+			<div class="exam-guide__name">
+				<p><%= patient.name %></p>
+			</div>
+			<div class="exam-guide__name-doctor">
+				<p><%= doctor.name %></p>
+      </div>
+			<div class="exam-guide__professional__concil">
+				<p>CRM</p>
+      </div>
+			<div class="exam-guide__crm">
+        <p><%= doctor.crm[0].number %></p>
+      </div>
+			<div class="exam-guide__uf">
+          <p><%= doctor.crm[0].uf %></p>
+        </div>
+			<div class="exam-guide__code-cbo">
+				<p><%= doctor.cbo %></p>
+			</div>
+			<div class="exam-guide__solicitation-date">
+				<p><%= date_now %></p>
+			</div>
+			<div class="exam-guide__clinic">
+				<p><%= clinical_indication %></p>
+			</div>
+
+			<% item.forEach(function(exam, index) { %>
+				<div class="exam-guide__exams-wrapper" style="top: <%= 251 + (index * 6.7) %>px">
+          <div class="exam-guide__exams-table">
+            <% if(exam.id) { %>
+              <p>22</p>
+            <% } else { %>
+              <p></p>
+            <% } %>
+            </div>
+					<div class="exam-guide__exams-code">
+						<p><%= exam.code %></p>
+					</div>
+					<div class="exam-guide__exams-description">
+						<p><%= exam.name %></p>
+					</div>
+					<div class="exam-guide__exams-quantity-requested">
+						<p>1</p>
+					</div>
+				</div>
+			<% }); %>
+			<div class="exam-guide"></div>
+		</div>
+	<% }); %>
+
+</body>
+</html>
